@@ -1,0 +1,15 @@
+spring:
+  jpa:
+    hibernate.ddl-auto: update
+    database: MYSQL
+    show-sql: true
+    hibernate: 
+      naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties: 
+      org.hibernate.envers.track_entities_changed_in_revision: false
+  datasource:
+    url: jdbc:mysql://192.168.0.8:3306/spring_data_native_query?createDatabaseIfNotExist=true&useSSL=false
+    username: root
+    password: q1w2e3r4
+    
+    

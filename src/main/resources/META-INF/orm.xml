@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings
+        xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_1.xsd"
+        version="2.1">
+
+    <named-native-query name="person.orm">
+        <query>
+        	<![CDATA[
+        		SELECT TX_NAME, PK_PERSON, DT_BIRTH, DT_LAST_CHANGE, VL_RATE, VL_TOTAL FROM TB_PEOPLE
+      	 	]]>
+      	 </query>
+    </named-native-query>
+
+    <named-native-query name="person.find.id.orm">
+        <query>
+        	<![CDATA[
+				SELECT TX_NAME, PK_PERSON, DT_BIRTH, DT_LAST_CHANGE, VL_RATE, VL_TOTAL FROM TB_PEOPLE WHERE PK_PERSON = :id      	 	]]>
+      	 </query>
+    </named-native-query>
+</entity-mappings>
