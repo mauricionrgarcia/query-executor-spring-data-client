@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -61,6 +63,9 @@ public class Person implements Serializable {
 
 	@Column(name = "VL_TOTAL")
 	private Integer total;
+
+	@OneToMany(mappedBy = "person")
+	private Set<Address> addresses;
 
 	/**
 	 * @param code
@@ -208,6 +213,17 @@ public class Person implements Serializable {
 		} else if (!code.equals(other.code))
 			return false;
 		return true;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Person [code=" + code + ", name=" + name + ", dtBirth=" + dtBirth + ", dtLastChange=" + dtLastChange
+				+ ", userChange=" + userChange + ", rate=" + rate + ", total=" + total + "]";
 	}
 
 }

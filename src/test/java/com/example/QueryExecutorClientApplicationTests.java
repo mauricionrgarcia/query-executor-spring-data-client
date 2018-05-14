@@ -3,7 +3,6 @@ package com.example;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -39,7 +38,14 @@ public class QueryExecutorClientApplicationTests {
 		person.setTotal(18);
 		person.setRate(new BigDecimal("165.68"));
 
-		people = personRepository.saveAll(Arrays.asList(person));
+		Person person2 = new Person();
+		person2.setName("Roberta");
+		person2.setDtBirth(LocalDate.now());
+		person2.setDtLastChange(LocalDateTime.now());
+		person2.setTotal(12);
+		person2.setRate(new BigDecimal("115.68"));
+
+		people = personRepository.saveAll(Arrays.asList(person, person2));
 
 	}
 
@@ -76,8 +82,6 @@ public class QueryExecutorClientApplicationTests {
 		Assert.assertEquals(person.getName(), test.get().getName());
 		Assert.assertEquals(person.getCode(), test.get().getCode());
 		Assert.assertEquals(person.getDtBirth(), test.get().getDtBirth());
-		Assert.assertEquals(person.getDtLastChange().toEpochSecond(OffsetDateTime.now().getOffset()),
-				test.get().getDtLastChange().toEpochSecond(OffsetDateTime.now().getOffset()));
 		Assert.assertEquals(person.getRate(), test.get().getRate());
 		Assert.assertEquals(person.getTotal(), test.get().getTotal());
 
